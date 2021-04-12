@@ -25,7 +25,7 @@ background = pygame.image.load("AnimatedStreet.png")
 DISPLAYSURF = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
 DISPLAYSURF.fill(WHITE)
 pygame.display.set_caption("Game")
-
+COIN_CNT = 0
 
 class Enemy(pygame.sprite.Sprite):
 
@@ -96,15 +96,20 @@ P1 = Player()
 E1 = Enemy()
 P2 = Player()
 C1 = Coin()
+C2 = Coin()
 enemies = pygame.sprite.Group()
 enemies.add(E1)
 coins = pygame.sprite.Group()
 coins.add(C1)
+coins.add(C2)
+
 all_sprites = pygame.sprite.Group()
 all_sprites.add(P1)
 all_sprites.add(E1)
 all_sprites.add(C1)
-
+COIN_CNT += 1
+all_sprites.add(C2)
+COIN_CNT += 1
 INC_SPEED = pygame.USEREVENT + 1
 pygame.time.set_timer(INC_SPEED, 1000)
 SPAWN_ENEMY = pygame.USEREVENT + 2
@@ -126,7 +131,7 @@ while True:
 
 	DISPLAYSURF.blit(background, (0, 0))
 	scores = font_small.render(str(SCORE), True, BLACK)
-	coins_collected = font_small.render(f"Coins: {COLLECTED_COINS}$", True, BLACK)
+	coins_collected = font_small.render(f"Coins: {COLLECTED_COINS // COIN_CNT}$", True, BLACK)
 	DISPLAYSURF.blit(scores, (10, 10))
 	DISPLAYSURF.blit(coins_collected, (290, 10))
 
