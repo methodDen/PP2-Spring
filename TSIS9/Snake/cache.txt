@@ -1,0 +1,1 @@
+{"size": 3, "thickness": 10, "dx": 5, "dy": 0, "is_add": false, "visible": true, "score": 0, "level": 1, "elements": [[235, 100], [230, 100], [225, 100]]}
